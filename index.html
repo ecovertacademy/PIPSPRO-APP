@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PIPS Pro™ - Property Inspection Profit System. Transform property inspection from subjective observation into quantifiable, data-driven analysis.">
+    <title>PIPS Pro™ - Property Inspection Profit System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0B1C3F;
+            --gold: #FFD700;
+            --beige: #F5F1E8;
+            --grey: #8B9AA3;
+            --light-grey: #E8EAED;
+            --dark-grey: #4A5568;
+            --light-bg: #FAFAF9;
+            --text-dark: #1a1a1a;
+            --text-gray: #6c757d;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--navy);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .cta-button {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, #1a2f5a 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 24px;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: white;
+            padding: 12px 30px;
+            border: 2px solid white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .secondary-button:hover {
+            background: white;
+            color: var(--navy);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--navy);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-gray);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            padding: 40px;
+            background: var(--beige);
+            border-radius: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--light-grey);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--navy);
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .benefit-item {
+            background: var(--beige);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid var(--gold);
+            border: 1px solid var(--light-grey);
+        }
+
+        .benefit-item h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--navy);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card {
+            background: var(--beige);
+            border: 2px solid var(--light-grey);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--gold);
+            border-width: 3px;
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--navy);
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .pricing-card h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--navy);
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--navy);
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--text-gray);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .pricing-features li:before {
+            content: "✓ ";
+            color: var(--gold);
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: var(--beige);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid var(--light-grey);
+        }
+
+        .faq-question {
+            padding: 25px;
+            font-weight: 600;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--navy);
+        }
+
+        .faq-question:hover {
+            background: var(--beige);
+        }
+
+        .faq-answer {
+            padding: 0 25px 25px;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--navy) 0%, #1a2f5a 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">PIPS Pro™</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="https://pipsproapp-axbn2mii.manus.space" class="cta-button">Start Free Trial</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="subtitle">Property Inspection Profit System</div>
+            <h1>Transform Property Inspection<br>Into Data-Driven Decisions</h1>
+            <p>Professional mobile app for property investors and inspectors. Conduct systematic assessments using 38 specialized protocols with quantifiable 0-10 rating system.</p>
+            <div class="hero-buttons">
+                <a href="https://pipsproapp-axbn2mii.manus.space" class="cta-button">Get Started Free</a>
+                <a href="#features" class="secondary-button">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Features for Professional Inspections</h2>
+            <p class="section-subtitle">Everything you need to conduct thorough, data-driven property assessments on-site</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>38 Specialized Protocols</h3>
+                    <p>Comprehensive assessment frameworks across 5 tiers, from Strategic Assessment to Environmental Hazards. Each protocol contains multiple dimensions with specific evaluation criteria.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>0-10 Rating System</h3>
+                    <p>Quantifiable scoring replaces subjective observation. Rate each assessment item on a standardized scale with automatic weighted calculations based on protocol tier importance.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3>Photo Annotation Tools</h3>
+                    <p>Capture property photos and annotate with drawing tools (pen, shapes, text, arrows) to highlight defects, features, or areas of concern directly on images.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🚨</div>
+                    <h3>Red Flag Tracking</h3>
+                    <p>Mark critical issues with severity levels (Critical, High, Medium, Low). Automatically included in reports to highlight risk factors for investment decisions.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h3>Professional PDF Reports</h3>
+                    <p>Generate comprehensive branded reports with assessment data, ratings, annotated photos, and red flags. White-label customisation available for Business tier.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Team Collaboration</h3>
+                    <p>Business tier includes team features with shared assessment access, member management, and collaborative workflows for larger inspection operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <h2 class="section-title">Why Property Professionals Choose PIPS Pro</h2>
+            <p class="section-subtitle">Transform your inspection workflow with systematic, repeatable, data-driven methodology</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4>✓ Consistency</h4>
+                    <p>Standardised protocols ensure thorough, repeatable assessments every time</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4>✓ Speed</h4>
+                    <p>Mobile-optimised workflow enables efficient on-site inspections</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4>✓ Accuracy</h4>
+                    <p>Weighted scoring provides quantifiable, objective results</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4>✓ Professionalism</h4>
+                    <p>Branded PDF reports enhance credibility with clients</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4>✓ Data-Driven</h4>
+                    <p>Replace subjective gut feelings with systematic analysis</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4>✓ Scalable</h4>
+                    <p>Team collaboration features support growing inspection businesses</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p class="section-subtitle">Choose the plan that fits your inspection volume and business needs</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Freemium</h3>
+                    <div class="price">£0<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>3 protocols access</li>
+                        <li>3 assessments per month</li>
+                        <li>Photo capture & annotation</li>
+                        <li>PDF report generation</li>
+                        <li>Mobile-optimised interface</li>
+                    </ul>
+                    <a href="https://pipsproapp-axbn2mii.manus.space" class="cta-button">Start Free</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price">£19.99<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>14 protocols access</li>
+                        <li>10 assessments per month</li>
+                        <li>All Freemium features</li>
+                        <li>Red flag tracking</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="https://pipsproapp-axbn2mii.manus.space" class="cta-button">Get Started</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>Pro</h3>
+                    <div class="price">£99<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>26 protocols access</li>
+                        <li>Unlimited assessments</li>
+                        <li>All Basic features</li>
+                        <li>Priority support</li>
+                        <li>Advanced analytics</li>
+                    </ul>
+                    <a href="https://pipsproapp-axbn2mii.manus.space" class="cta-button">Upgrade to Pro</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Business</h3>
+                    <div class="price">£299<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>All 38 protocols</li>
+                        <li>Unlimited assessments</li>
+                        <li>Team collaboration</li>
+                        <li>White-label branding</li>
+                        <li>Dedicated support</li>
+                    </ul>
+                    <a href="https://pipsproapp-axbn2mii.manus.space" class="cta-button">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is PIPS Pro?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        PIPS Pro (Property Inspection Profit System) is a professional mobile-first web application for property investors and inspectors to conduct systematic, data-driven property assessments using 38 specialized protocols with a quantifiable 0-10 rating system.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does the rating system work?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Each protocol contains multiple dimensions with specific assessment items. You rate each item on a 0-10 scale. The system automatically calculates dimension scores and overall assessment scores using tier-based weighting (Tier 1 protocols weighted 2.0x down to Tier 5 at 0.5x).
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I try PIPS Pro before purchasing?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! The Freemium tier is completely free and includes access to 3 protocols with 3 assessments per month. This allows you to test the complete workflow including photo annotation and PDF report generation before upgrading.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What devices does PIPS Pro work on?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        PIPS Pro is a mobile-first web application that works on any device with a modern web browser (smartphones, tablets, laptops, desktops). No app store download required - simply access via your browser.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What's included in the white-label feature?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Business tier subscribers can customise PDF reports with their own logo, company colours, and branding. This allows inspection businesses to deliver professional reports under their own brand identity.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does team collaboration work?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Business tier includes team features allowing you to invite team members, share assessment access, and collaborate on inspections. Perfect for larger inspection operations with multiple inspectors.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Property Inspections?</h2>
+            <p>Join property professionals using PIPS Pro for data-driven investment decisions</p>
+            <a href="https://pipsproapp-axbn2mii.manus.space" class="cta-button">Start Your Free Trial</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PIPS Pro™</h4>
+                    <p>Property Inspection Profit System<br>By Ali Sekhr<br>London–Dubai</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="https://pipsproapp-axbn2mii.manus.space">Launch App</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 PIPS Pro™. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+                
+                // Close all answers
+                document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+                document.querySelectorAll('.faq-question span').forEach(s => s.textContent = '+');
+                
+                // Toggle current answer
+                if (!isOpen) {
+                    answer.style.display = 'block';
+                    question.querySelector('span').textContent = '−';
+                }
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
